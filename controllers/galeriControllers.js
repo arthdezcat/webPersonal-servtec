@@ -29,7 +29,7 @@ exports.addGaleria = async (req, res) => {
 exports.deleteGaleria = async (req, res) => {
   try {
     const { id } = req.params;
-    await Contact.findByIdAndDelete(id);
+    await Galeria.findByIdAndDelete(id);
     res.redirect('/admin/galeria');
   } catch (error) {
     console.error(error);
