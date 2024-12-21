@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Administrar Galeria</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+        <a href="/admin">Inicio</a>
+        <a href="/admin/services">Servicios</a>
+        <a href="/admin/galeria">Galeria</a>
+        <a href="/admin/contact">Contacto</a>
+        <a href="/logout">Serrar Sesion</a>
+      </nav>
+  </header>
+  <h1>Administrar Galeria</h1>
+  <form action="/admin/galeria/add" method="post">
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title" required>
+    
+    <label for="description">Descripción:</label>
+    <textarea id="description" name="description" required></textarea>
+    
+    <label for="image">URL de la Imagen:</label>
+    <input type="text" id="image" name="image" required>
+    
+    <button type="submit">Añadir Galeria</button>
+  </form>
+
+  <h2>Galeria Actual</h2>
+  <ul>
+    <% galeria.forEach(galeria => { %>
+      <li>
+        <strong><%= galeria.title %></strong> - <%= galeria.description %>
+        <form action="/admin/galeria/delete/<%= galeria._id %>" method="post" style="display: inline;">
+          <button type="submit">Eliminar</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>

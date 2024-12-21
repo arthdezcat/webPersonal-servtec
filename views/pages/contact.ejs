@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Servicios - WebPersonal</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/services">Servicios</a>
+      <a href="/galeria">Galeria</a>
+      <a href="/contact">Contacto</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Contactos</h2>
+    <div class="contacts">
+      <% contact.forEach(contact=> { %>
+        <div class="contact">
+          <h3>Nombre: <%= contact.name %></h3>
+          <p>Email: <%= contact.email %></p>
+          <p>Telefono: <%= contact.telefono %></p>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+</body>
+</html>

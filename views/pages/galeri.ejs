@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Servicios - WebPersonal</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/services">Servicios</a>
+        <a href="/galeria">Galeria</a>
+        <a href="/contact">Contacto</a>
+      </nav>
+  </header>
+  <main>
+    <h2>Nuestra Galeria</h2>
+    <div class="galeria">
+      <% galeria.forEach(galeria => { %>
+        <div class="galeria">
+            <h3><%= galeria.title %></h3>
+          <img src="<%= galeria.image %>" alt="<%= galeria.title %>">
+          <p><%= galeria.description %></p>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+</body>
+</html>
