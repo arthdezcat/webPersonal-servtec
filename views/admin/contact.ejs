@@ -1,43 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Administrar de Contactos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrar Contactos</title>
   <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="icon" href="/img/administracion.png" type="image/png">
 </head>
-<body>
+<body class="admin-page">
   <header>
     <nav>
-      <a href="/admin">Inicio</a>
-      <a href="/admin/services">Servicios</a>
-      <a href="/admin/galeria">Galeria</a>
-      <a href="/admin/contact">Contacto</a>
-      <a href="/logout">Serrar Sesion</a>
+      <a href="/admin">
+        <i class="fas fa-tachometer-alt"></i> Inicio
+      </a>
+      <a href="/admin/services">
+        <i class="fas fa-tools"></i> Servicios
+      </a>
+      <a href="/admin/galeria">
+        <i class="fas fa-cogs"></i> Otros
+      </a>
+      <a href="/admin/contact">
+        <i class="fas fa-address-book"></i> Contacto
+      </a>
+      <a href="/logout">
+        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+      </a>
     </nav>
   </header>
-  <h1>Administrar de Contactos</h1>
-  <form action="/admin/contact/add" method="post">
-    <label for="title">Name:</label>
-    <input type="text" id="name" name="name" required>
-    
-    <label for="description">Email:</label>
-    <input type="text" id="email" name="email" required>
-    
-    <label for="price">Telefono:</label>
-    <input type="text" id="telefono" name="telefono" required>
-    
-    <button type="submit">Añadir Contacto</button>
-  </form>
 
-  <h2>Contactos</h2>
-  <ul>
-    <% contact.forEach(contact => { %>
-      <li>
-        <strong><%= contact.name %></strong> - <%= contact.email %></strong> - <%= contact.telefono %>
-        <form action="/admin/contact/delete/<%= contact._id %>" method="post" style="display: inline;">
-          <button type="submit">Eliminar</button>
+  <main>
+    <div class="admin-container-contact">
+      <!-- Sección para agregar contactos -->
+      <section class="add-contact">
+        <h1>Agregar Contacto</h1>
+        <form action="/admin/contact/add" method="post" class="contact-form">
+          <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" required>
+          </div>
+
+          <button type="submit" class="submit-btn">Añadir Contacto</button>
         </form>
-      </li>
-    <% }); %>
-  </ul>
+      </section>
+
+      <!-- Sección para administrar contactos -->
+      <section class="manage-contact">
+        <h2>Contactos Actuales</h2>
+        <ul class="contact-list-admin">
+          <% contact.forEach(contact => { %>
+            <li class="contact-item-admin">
+              <div class="contact-details-admin">
+                <strong><%= contact.name %></strong>
+                <p>Email: <%= contact.email %></p>
+                <p>Teléfono: <%= contact.telefono %></p>
+              </div>
+              <form action="/admin/contact/delete/<%= contact._id %>" method="post">
+                <button type="submit" class="delete-btn">Eliminar</button>
+              </form>
+            </li>
+          <% }); %>
+        </ul>
+      </section>
+    </div>
+  </main>
 </body>
 </html>
