@@ -172,7 +172,7 @@ header nav ul li a:hover {
 nav a {
   color: #fff;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 0 10px;
   font-size: 18px;
   display: inline-flex;
   align-items: center;
@@ -181,11 +181,11 @@ nav a {
 /* Estilos para el logo en la barra de navegación */
 nav .logo {
   display: inline-block;
-  margin-right: 3px; /* Espacio entre el logo y los enlaces */
+  margin-right: 0px; /* Espacio entre el logo y los enlaces */
 }
 
 nav .logo-img {
-  width: 35px;  /* Tamaño del logo */
+  width: 30px;  /* Tamaño del logo */
   height: auto;
   vertical-align: middle;
 }
