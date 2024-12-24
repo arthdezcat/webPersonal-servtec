@@ -5,14 +5,7 @@
     padding: 0;
     line-height: 1.6;
   }
-  
-  .portada-content-indice ul {
-    text-align: left;
-    margin: 0 auto 20px;
-    display: inline-block;
-    list-style: none;
-    padding: 0;
-  }
+
   .colorcontacto {
     color: #fff; /* Cambia el color del texto para mayor contraste */
     text-align: center;
@@ -27,34 +20,8 @@
     border-radius: 10px;
   }
 
-  .header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .header h1 {
-    margin: 0;
-  }
-  
-  /* Navegación */
-  .nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  
-  .nav li a:hover {
-    color: #f0db4f; /* Cambia a un color destacado al pasar el mouse */
-  }
+ 
+
   
   /* Contenido de la portada */
   .portada-content {
