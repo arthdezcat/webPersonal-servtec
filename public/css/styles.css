@@ -179,16 +179,16 @@ nav a {
   transition: color 0.3s;
 }
 /* Estilos para el logo en la barra de navegación */
-nav .logo {
+/*nav .logo {
   display: inline-block;
-  margin-right: 1px; /* Espacio entre el logo y los enlaces */
+  margin-right: 1px; /* Espacio entre el logo y los enlaces 
 }
 
 nav .logo-img {
-  width: 30px;  /* Tamaño del logo */
+  width: 30px;  /* Tamaño del logo 
   height: auto;
   vertical-align: middle;
-}
+}*/
 nav a i {
   margin-right: 8px; /* Espaciado entre el ícono y el texto */
   font-size: 20px;   /* Ajusta el tamaño del ícono */
