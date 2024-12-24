@@ -27,15 +27,6 @@
     border-radius: 10px;
   }
 
-  
-  /* Estilo para el logo */
-  .logo-img {
-    width: 50px; /* Ajusta el tamaño del logo según sea necesario */
-    height: auto;
-    display: inline-block;
-    margin-right: 10px; /* Espacio entre el logo y el título */
-    vertical-align: middle; /* Alinea el logo con el texto */
-  }  
   .header .container {
     display: flex;
     justify-content: space-between;
