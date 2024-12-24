@@ -181,11 +181,11 @@ nav a {
 /* Estilos para el logo en la barra de navegación */
 nav .logo {
   display: inline-block;
-  margin-right: 20px; /* Espacio entre el logo y los enlaces */
+  margin-right: 3px; /* Espacio entre el logo y los enlaces */
 }
 
 nav .logo-img {
-  width: 30px;  /* Tamaño del logo */
+  width: 24px;  /* Tamaño del logo */
   height: auto;
   vertical-align: middle;
 }
