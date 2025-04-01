@@ -1,0 +1,107 @@
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">
+                <i class="fas fa-home"></i> Inicio
+            </a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-list">
+            <li><a href="/services"><i class="fas fa-tools"></i> Servicios</a></li>
+            <li><a href="/galeria"><i class="fas fa-cogs"></i> Otros</a></li>
+            <li><a href="/contact"><i class="fas fa-address-book"></i> Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+/* Estilos para el header */
+header {
+    background-color: #333;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 10px; /* Reducir aún más el espacio entre los elementos */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-list li a:hover {
+    color: #f39c12;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .nav-list.active {
+        display: flex;
+    }
+
+    .nav-list li {
+        text-align: center;
+        margin: 10px 0;
+    }
+}
+</style>
+
+<script>
+// Script para el menú desplegable
+const mobileMenu = document.getElementById('mobile-menu');
+const navList = document.querySelector('.nav-list');
+
+mobileMenu.addEventListener('click', () => {
+    navList.classList.toggle('active');
+});
+</script>

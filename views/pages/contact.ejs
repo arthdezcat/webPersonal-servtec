@@ -8,25 +8,49 @@
   <link rel="stylesheet" href="/css/css.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="icon" href="/img/LogoOfic.png" type="image/png"> 
+  <style>
+  body.contact-page {
+    background-image: url('/img/FondoPrincip.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+  @media (max-width: 768px) {
+    body.contact-page {
+      background-attachment: scroll;
+    }
+  }
+  footer {
+    background: #222;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .footer-icons {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-icons li {
+    display: inline;
+    margin: 0 10px;
+  }
+
+  .footer-icons a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+  }
+
+  .footer-icons a:hover {
+    color: #00aced;
+  }
+</style>
 </head>
 <body class="contact-page"> <!-- Clase específica para la página de contacto -->
-  <!-- Header with Navigation -->
-  <header>
-    <nav>
-        <a href="/">
-          <i class="fas fa-home"></i> Inicio
-        </a>
-        <a href="/services">
-          <i class="fas fa-tools"></i> Servicios
-        </a>
-        <a href="/galeria">
-          <i class="fas fa-cogs"></i> Otros
-        </a>
-        <a href="/contact">
-          <i class="fas fa-address-book"></i> Contacto
-        </a>
-    </nav>
-  </header>
+  <%- include('../partials/header') %>
 
   <!-- Main Content Section -->
   <main>
@@ -34,24 +58,23 @@
       <section class="portada-content">
         <h2><span class="brand-name-serv">Contacto</span></h2>
         <p class="contact-descript">
-          ¿Tienes alguna consulta o necesitas más información? Estamos aquí para ayudarte. 
-          Puedes contactarnos a través de WhatsApp o enviarnos un email para obtener más detalles sobre nuestros servicios o solicitar una cotización personalizada.
+          ¿Tienes alguna consulta o necesitas más información? Estamos aquí para ayudarte. Puedes contactarnos a través de WhatsApp, Facebook o enviarnos un Email para obtener más detalles sobre nuestros servicios o solicitar una cotización. Haz clic en los siguientes enlaces y contáctanos.
         </p>
         <div class="contacts-container">
           <% contact.forEach(contact => { %>
-            <div class="contact-item">
-              <h3 class="contact-name">Nombre: <%= contact.name %></h3>
-              <p class="contact-email">Email: <%= contact.email %></p>
-              <p class="contact-phone">Teléfono: <%= contact.telefono %></p>
+            <div class="contact-item" style="text-align: left;">
+              <h3 class="contact-name"><a href="<%= contact.facebookUrl %>" target="_blank"><i class="fab fa-facebook"></i> <%= contact.name %></a></h3>
+              <p class="contact-email"><a href="<%= contact.emailUrl %>" target="_blank"><i class="fas fa-envelope"></i> <%= contact.email %></a></p>
+              <p class="contact-phone"><a href="<%= contact.whatsappUrl %>" target="_blank"><i class="fab fa-whatsapp"></i> <%= contact.telefono %></a></p>
+              <% if (contact.extraUrl) { %>
+                <p class="contact-extra"><a href="<%= contact.extraUrl %>" target="_blank"><i class="fas fa-link"></i> Ver Mas</a></p>
+              <% } %>
             </div>
           <% }); %>
         </div>
       </section>
     </div>
   </main>
-
-  <footer>
-    <p>&copy; 2024 ServiTec. Todos los derechos reservados.</p>
-  </footer>
+  <%- include('../partials/footer') %>
 </body>
 </html>

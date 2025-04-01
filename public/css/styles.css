@@ -1,3 +1,21 @@
+/* Ajustes para que las imágenes de fondo sean responsivas */
+body.services-page,
+body.galeri-page,
+body.contact-page,
+body.welcome-page {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  body.services-page,
+  body.galeri-page,
+  body.contact-page,
+  body.welcome-page {
+    background-attachment: scroll;
+  }
+}
 
 /* Reset some default browser styles */
 * {
@@ -40,7 +58,7 @@ body.galeri-page {
   padding: 20px;
 }
 .galeria-item {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco más transparente */
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -55,14 +73,14 @@ body.galeri-page {
 
 .galeria-item-title {
   font-size: 24px;
-  color: #333;
+  color: #000; /* Texto negro para mayor contraste */
   margin-top: 15px;
 }
 
 .galeria-item-description {
   font-size: 16px;
   text-align: justify;
-  color: #555;
+  color: #000; /* Texto negro para mayor contraste */
   margin-top: 10px;
 }
 
@@ -92,23 +110,33 @@ body.contact-page {
 }
 
 .contact-item {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco más transparente */
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 300px;
   text-align: center;
+  color: #000; /* Todo el texto en color negro */
+}
+
+.contact-item a {
+  color: #000; /* Enlaces en color negro */
+  text-decoration: none; /* Sin subrayado */
+}
+
+.contact-item a:hover {
+  text-decoration: underline; /* Subrayado al pasar el cursor */
 }
 
 .contact-name {
   font-size: 22px;
-  color: #333;
+  color: #000; /* Texto negro para mayor contraste */
 }
 
 .contact-email,
 .contact-phone {
   font-size: 16px;
-  color: #333;
+  color: #000; /* Texto negro para mayor contraste */
   margin-top: 10px;
 }
 
@@ -189,6 +217,7 @@ nav .logo-img {
   height: auto;
   vertical-align: middle;
 }*/
+
 nav a i {
   margin-right: 8px; /* Espaciado entre el ícono y el texto */
   font-size: 20px;   /* Ajusta el tamaño del ícono */
@@ -230,7 +259,7 @@ nav a:hover {
 }
 
 .service-item {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
@@ -254,14 +283,14 @@ nav a:hover {
 
 .service-title {
   font-size: 24px;
-  color: #333;
+  color: #000; /* Texto negro para mayor contraste */
   margin-bottom: 10px;
 }
 
 .service-description {
   font-size: 16px;
   text-align: justify;
-  color: #555;
+  color: #000; /* Texto negro para mayor contraste */
   margin-bottom: 10px;
 }
 
@@ -732,10 +761,27 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  display: flex;
+  justify-content: center; /* Centrar contenido */
+  align-items: center;
+  gap: 10px; /* Reducir espacio entre iconos y texto */
+}
+
+.footer-icons {
+  list-style: none;
+  display: flex;
+  gap: 5px; /* Reducir el espacio entre los iconos */
+  margin: 0;
+  padding: 0;
+}
+
+.footer-icons li {
+  display: inline;
 }
 
 footer p {
   font-size: 16px;
+  margin: 0;
 }
 
 

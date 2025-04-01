@@ -15,13 +15,26 @@ exports.getContact = async (req, res) => {
 // Añadir un nuevo servicio
 exports.addContact = async (req, res) => {
   try {
-    const { name, email, telefono } = req.body;
-    const newContact = new Contact({ name, email, telefono });
+    const { name, email, telefono, emailUrl, whatsappUrl, facebookUrl, extraUrl, footer } = req.body;
+    const newContact = new Contact({ name, email, telefono, emailUrl, whatsappUrl, facebookUrl, extraUrl, footer });
     await newContact.save();
     res.redirect('/admin/contact');
   } catch (error) {
     console.error(error);
-    res.status(500).send('Error al agregar el servicio');
+    res.status(500).send('Error al agregar el contacto');
+  }
+};
+
+// Actualizar un contacto
+exports.updateContact = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, email, telefono, emailUrl, whatsappUrl, facebookUrl, extraUrl, footer } = req.body;
+    await Contact.findByIdAndUpdate(id, { name, email, telefono, emailUrl, whatsappUrl, facebookUrl, extraUrl, footer });
+    res.redirect('/admin/contact');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error al actualizar el contacto');
   }
 };
 

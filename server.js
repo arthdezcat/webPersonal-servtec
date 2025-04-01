@@ -33,6 +33,19 @@ app.use(
   })
 );
 
+// Middleware para hacer que 'contact' esté disponible en todas las vistas
+const Contact = require('./models/Contact');
+app.use(async (req, res, next) => {
+  try {
+    const contact = await Contact.find();
+    res.locals.contact = contact;
+    next();
+  } catch (error) {
+    console.error('Error al obtener los datos de contacto:', error);
+    next(error);
+  }
+});
+
 // Configuración de vistas y middlewares
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));

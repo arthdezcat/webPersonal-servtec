@@ -24,6 +24,19 @@ exports.addService = async (req, res) => {
   }
 };
 
+// Actualizar un servicio
+exports.updateService = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, description, price, image } = req.body;
+    await Service.findByIdAndUpdate(id, { title, description, price, image });
+    res.redirect('/admin/services');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error al actualizar el servicio');
+  }
+};
+
 // Eliminar un servicio
 exports.deleteService = async (req, res) => {
   try {

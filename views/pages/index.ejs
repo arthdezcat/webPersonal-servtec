@@ -8,26 +8,49 @@
   <link rel="stylesheet" href="/css/css.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="icon" href="/img/LogoOfic.png" type="image/png"> 
-  
+  <style>
+  body.welcome-page {
+    background-image: url('/img/FondoPrincip.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+  @media (max-width: 768px) {
+    body.welcome-page {
+      background-attachment: scroll;
+    }
+  }
+  footer {
+    background: #222;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .footer-icons {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-icons li {
+    display: inline;
+    margin: 0 10px;
+  }
+
+  .footer-icons a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+  }
+
+  .footer-icons a:hover {
+    color: #00aced;
+  }
+</style>
 </head>
 <body class="welcome-page">
-  <!-- Header with Navigation -->
-  <header>
-    <nav>
-        <a href="/">
-          <i class="fas fa-home"></i> Inicio
-        </a>
-        <a href="/services">
-          <i class="fas fa-tools"></i> Servicios
-        </a>
-        <a href="/galeria">
-          <i class="fas fa-cogs"></i> Otros
-        </a>
-        <a href="/contact">
-          <i class="fas fa-address-book"></i> Contacto
-        </a>
-    </nav>
-  </header>
+  <%- include('../partials/header') %>
 
   <!-- Main Content Section -->
   <main>
@@ -60,8 +83,6 @@
     </div>
   </main>
 
-  <footer>
-    <p>&copy; 2024 ServiTec. Todos los derechos reservados.</p>
-  </footer>
+  <%- include('../partials/footer') %> 
 </body>
 </html>

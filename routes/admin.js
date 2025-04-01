@@ -31,4 +31,9 @@ router.post('/contact/delete/:id', contactController.deleteContact);
 router.post('/galeria/add', galeriaController.addGaleria);
 router.post('/galeria/delete/:id', galeriaController.deleteGaleria);
 
+// Rutas para actualizar registros
+router.post('/services/update/:id', serviceController.updateService);
+router.post('/galeria/update/:id', galeriaController.updateGaleria);
+router.post('/contact/update/:id', contactController.updateContact);
+
 module.exports = router;

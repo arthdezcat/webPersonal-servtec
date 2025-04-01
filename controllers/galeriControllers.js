@@ -25,6 +25,19 @@ exports.addGaleria = async (req, res) => {
   }
 };
 
+// Actualizar un servicio de galería
+exports.updateGaleria = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, description, image } = req.body;
+    await Galeria.findByIdAndUpdate(id, { title, description, image });
+    res.redirect('/admin/galeria');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error al actualizar el servicio de galería');
+  }
+};
+
 // Eliminar un servicio
 exports.deleteGaleria = async (req, res) => {
   try {

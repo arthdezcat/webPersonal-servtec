@@ -50,6 +50,27 @@
             <input type="text" id="telefono" name="telefono" required>
           </div>
 
+          <div class="form-group">
+            <label for="emailUrl">URL de Email:</label>
+            <input type="url" id="emailUrl" name="emailUrl">
+          </div>
+          <div class="form-group">
+            <label for="whatsappUrl">URL de WhatsApp:</label>
+            <input type="url" id="whatsappUrl" name="whatsappUrl">
+          </div>
+          <div class="form-group">
+            <label for="facebookUrl">URL de Facebook:</label>
+            <input type="url" id="facebookUrl" name="facebookUrl">
+          </div>
+          <div class="form-group">
+            <label for="extraUrl">URL Extra:</label>
+            <input type="url" id="extraUrl" name="extraUrl">
+          </div>
+          <div class="form-group">
+            <label for="footer">Footer:</label>
+            <input type="text" id="footer" name="footer">
+          </div>
+
           <button type="submit" class="submit-btn">Añadir Contacto</button>
         </form>
       </section>
@@ -68,6 +89,57 @@
               <form action="/admin/contact/delete/<%= contact._id %>" method="post">
                 <button type="submit" class="delete-btn">Eliminar</button>
               </form>
+              <!-- Botón para mostrar/ocultar formulario de actualización -->
+              <button class="toggle-update-form" onclick="toggleUpdateForm('<%= contact._id %>')">Actualizar</button>
+
+              <!-- Formulario para actualizar un contacto (oculto por defecto) -->
+              <div id="update-form-<%= contact._id %>" class="update-form-container" style="display: none;">
+                <form action="/admin/contact/update/<%= contact._id %>" method="post" class="update-form">
+                  <fieldset>
+                    <legend>Actualizar Contacto</legend>
+                    <div class="form-group">
+                      <label for="name">Nombre:</label>
+                      <input type="text" id="name" name="name" value="<%= contact.name %>" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input type="email" id="email" name="email" value="<%= contact.email %>" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="telefono">Teléfono:</label>
+                      <input type="text" id="telefono" name="telefono" value="<%= contact.telefono %>" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="emailUrl">URL de Email:</label>
+                      <input type="url" id="emailUrl" name="emailUrl" value="<%= contact.emailUrl %>">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="whatsappUrl">URL de WhatsApp:</label>
+                      <input type="url" id="whatsappUrl" name="whatsappUrl" value="<%= contact.whatsappUrl %>">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="facebookUrl">URL de Facebook:</label>
+                      <input type="url" id="facebookUrl" name="facebookUrl" value="<%= contact.facebookUrl %>">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="extraUrl">URL Extra:</label>
+                      <input type="url" id="extraUrl" name="extraUrl" value="<%= contact.extraUrl %>">
+                    </div>
+                    <div class="form-group">
+                      <label for="footer">Footer:</label>
+                      <input type="text" id="footer" name="footer" value="<%= contact.footer %>">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                  </fieldset>
+                </form>
+              </div>
             </li>
           <% }); %>
         </ul>
@@ -75,4 +147,10 @@
     </div>
   </main>
 </body>
+<script>
+  function toggleUpdateForm(id) {
+    const form = document.getElementById(`update-form-${id}`);
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
 </html>

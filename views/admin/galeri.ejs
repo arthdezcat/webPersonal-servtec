@@ -67,11 +67,45 @@
               <form action="/admin/galeria/delete/<%= galeria._id %>" method="post">
                 <button type="submit" class="delete-btn">Eliminar</button>
               </form>
+              <!-- Botón para mostrar/ocultar formulario de actualización -->
+              <button class="toggle-update-form" onclick="toggleUpdateForm('<%= galeria._id %>')">Actualizar</button>
+
+              <!-- Formulario para actualizar un servicio de galería (oculto por defecto) -->
+              <div id="update-form-<%= galeria._id %>" class="update-form-container" style="display: none;">
+                <form action="/admin/galeria/update/<%= galeria._id %>" method="post" class="update-form">
+                  <fieldset>
+                    <legend>Actualizar Servicio de Galería</legend>
+                    <div class="form-group">
+                      <label for="title">Título:</label>
+                      <input type="text" id="title" name="title" value="<%= galeria.title %>" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="description">Descripción:</label>
+                      <textarea id="description" name="description" required><%= galeria.description %></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="image">URL de la Imagen:</label>
+                      <input type="text" id="image" name="image" value="<%= galeria.image %>" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                  </fieldset>
+                </form>
+              </div>
             </li>
           <% }); %>
         </ul>
       </section>
     </div>
   </main>
+
+  <script>
+    function toggleUpdateForm(id) {
+      const form = document.getElementById(`update-form-${id}`);
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
 </body>
 </html>
