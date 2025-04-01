@@ -80,7 +80,6 @@
   </main>
 
   <footer>
-    <% contact.forEach(contact => { %>
     <ul class="footer-icons">
       <li>
         <a href="<%= contact[0].emailUrl %>"><i class="fas fa-envelope"></i></a>
@@ -93,7 +92,6 @@
       </li>
     </ul>
     <p>&copy; <%= contact[0].footer %></p> 
-    <% }); %>
 </footer>
 </body>
 </html>
