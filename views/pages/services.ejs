@@ -81,6 +81,7 @@
 
   <footer>
     <ul class="footer-icons">
+      <% if (contact && contact[0]) { %>
       <li>
         <a href="<%= contact[0].emailUrl %>"><i class="fas fa-envelope"></i></a>
       </li>
@@ -90,8 +91,11 @@
       <li>
         <a href="<%= contact[0].whatsappUrl %>" target="_blank"><i class="fab fa-whatsapp"></i></a>
       </li>
+      <% } else { %>
+        <li>No hay informacion</li>
+        <% } %>
     </ul>
-    <p>&copy; <%= contact[0].footer %></p> 
+    <p>&copy; <%= contact && contact[0] ? contact[0].footer : '2025' %></p> 
 </footer>
 </body>
 </html>
