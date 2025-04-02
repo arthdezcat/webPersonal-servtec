@@ -42,7 +42,13 @@
 
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+              title="Por favor, introduce un correo electrónico válido (ejemplo: usuario@dominio.com)" 
+              required>
           </div>
 
           <div class="form-group">
@@ -54,17 +60,26 @@
             <label for="emailUrl">URL de Email:</label>
             <input type="url" id="emailUrl" name="emailUrl">
           </div>
-            <div class="form-group">
+          <script>
+            const emailInputAdd = document.getElementById('email');
+            const emailUrlInputAdd = document.getElementById('emailUrl');
+
+            emailInputAdd.addEventListener('input', () => {
+              const emailValue = emailInputAdd.value.trim();
+              emailUrlInputAdd.value = emailValue ? `mailto:${emailValue}` : '';
+            });
+          </script>
+          <div class="form-group">
             <label for="whatsappUrl">Número de WhatsApp:</label>
             <input type="text" id="whatsappUrl" name="whatsappUrl" pattern="\d+" title="Solo se permiten números" required>
-            </div>
-            <script>
+          </div>
+          <script>
             const whatsappInput = document.getElementById('whatsappUrl');
             whatsappInput.addEventListener('input', () => {
               const number = whatsappInput.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
               whatsappInput.value = number ? `https://wa.me/${number}` : '';
             });
-            </script>
+          </script>
           <div class="form-group">
             <label for="facebookUrl">URL de Facebook:</label>
             <input type="url" id="facebookUrl" name="facebookUrl">
@@ -111,7 +126,14 @@
 
                     <div class="form-group">
                       <label for="email">Email:</label>
-                      <input type="email" id="email" name="email" value="<%= contact.email %>" required>
+                      <input 
+                        type="email" 
+                        id="email-<%= contact._id %>" 
+                        name="email" 
+                        value="<%= contact.email %>" 
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                        title="Por favor, introduce un correo electrónico válido (ejemplo: usuario@dominio.com)" 
+                        required>
                     </div>
 
                     <div class="form-group">
@@ -121,8 +143,17 @@
 
                     <div class="form-group">
                       <label for="emailUrl">URL de Email:</label>
-                      <input type="url" id="emailUrl" name="emailUrl" value="<%= contact.emailUrl %>">
+                      <input type="url" id="emailUrl-<%= contact._id %>" name="emailUrl" value="<%= contact.emailUrl %>">
                     </div>
+                    <script>
+                      const emailInput = document.getElementById('email-<%= contact._id %>');
+                      const emailUrlInput = document.getElementById('emailUrl-<%= contact._id %>');
+
+                      emailInput.addEventListener('input', () => {
+                        const emailValue = emailInput.value.trim();
+                        emailUrlInput.value = emailValue ? `mailto:${emailValue}` : '';
+                      });
+                    </script>
 
                     <div class="form-group">
                       <label for="whatsappUrl">URL de WhatsApp:</label>
