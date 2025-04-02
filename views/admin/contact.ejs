@@ -53,12 +53,12 @@
 
           <div class="form-group">
             <label for="telefono">Teléfono:</label>
-            <input type="text" id="telefono" name="telefono" required>
+            <input type="text" id="telefono" name="telefono" pattern="\d+" title="Solo se permiten números" required>
           </div>
 
           <div class="form-group">
             <label for="emailUrl">URL de Email:</label>
-            <input type="url" id="emailUrl" name="emailUrl">
+            <input type="url" id="emailUrl" name="emailUrl" readonly>
           </div>
           <script>
             const emailInputAdd = document.getElementById('email');
@@ -71,13 +71,15 @@
           </script>
           <div class="form-group">
             <label for="whatsappUrl">Número de WhatsApp:</label>
-            <input type="text" id="whatsappUrl" name="whatsappUrl" pattern="\d+" title="Solo se permiten números" required>
+            <input type="text" id="whatsappUrl" name="whatsappUrl" readonly>
           </div>
           <script>
-            const whatsappInput = document.getElementById('whatsappUrl');
-            whatsappInput.addEventListener('input', () => {
-              const number = whatsappInput.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
-              whatsappInput.value = number ? `https://wa.me/${number}` : '';
+            const telefonoInput = document.getElementById('telefono');
+            const whatsappUrlInput = document.getElementById('whatsappUrl');
+
+            telefonoInput.addEventListener('input', () => {
+              const telefonoValue = telefonoInput.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+              whatsappUrlInput.value = telefonoValue ? `https://wa.me/${telefonoValue}` : '';
             });
           </script>
           <div class="form-group">
@@ -138,12 +140,12 @@
 
                     <div class="form-group">
                       <label for="telefono">Teléfono:</label>
-                      <input type="text" id="telefono" name="telefono" value="<%= contact.telefono %>" required>
+                      <input type="text" id="telefono-<%= contact._id %>" name="telefono" value="<%= contact.telefono %>" pattern="\d+" title="Solo se permiten números" required>
                     </div>
 
                     <div class="form-group">
                       <label for="emailUrl">URL de Email:</label>
-                      <input type="url" id="emailUrl-<%= contact._id %>" name="emailUrl" value="<%= contact.emailUrl %>">
+                      <input type="url" id="emailUrl-<%= contact._id %>" name="emailUrl" value="<%= contact.emailUrl %>" readonly>
                     </div>
                     <script>
                       const emailInput = document.getElementById('email-<%= contact._id %>');
@@ -156,14 +158,16 @@
                     </script>
 
                     <div class="form-group">
-                      <label for="whatsappUrl">URL de WhatsApp:</label>
-                      <input type="text" id="whatsappUrl-<%= contact._id %>" name="whatsappUrl" value="<%= contact.whatsappUrl %>" pattern="\d+" title="Solo se permiten números" required>
+                      <label for="whatsappUrl">Número de WhatsApp:</label>
+                      <input type="text" id="whatsappUrl-<%= contact._id %>" name="whatsappUrl" value="<%= contact.whatsappUrl %>" readonly>
                     </div>
                     <script>
-                      const whatsappInputUpdate = document.getElementById('whatsappUrl-<%= contact._id %>');
-                      whatsappInputUpdate.addEventListener('input', () => {
-                        const number = whatsappInputUpdate.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
-                        whatsappInputUpdate.value = number ? `https://wa.me/${number}` : '';
+                      const telefonoInputUpdate = document.getElementById('telefono-<%= contact._id %>');
+                      const whatsappUrlInputUpdate = document.getElementById('whatsappUrl-<%= contact._id %>');
+
+                      telefonoInputUpdate.addEventListener('input', () => {
+                        const telefonoValue = telefonoInputUpdate.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+                        whatsappUrlInputUpdate.value = telefonoValue ? `https://wa.me/${telefonoValue}` : '';
                       });
                     </script>
 
