@@ -54,10 +54,17 @@
             <label for="emailUrl">URL de Email:</label>
             <input type="url" id="emailUrl" name="emailUrl">
           </div>
-          <div class="form-group">
-            <label for="whatsappUrl">URL de WhatsApp:</label>
-            <input type="url" id="whatsappUrl" name="whatsappUrl">
-          </div>
+            <div class="form-group">
+            <label for="whatsappUrl">Número de WhatsApp:</label>
+            <input type="text" id="whatsappUrl" name="whatsappUrl" pattern="\d+" title="Solo se permiten números" required>
+            </div>
+            <script>
+            const whatsappInput = document.getElementById('whatsappUrl');
+            whatsappInput.addEventListener('input', () => {
+              const number = whatsappInput.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+              whatsappInput.value = number ? `https://wa.me/${number}` : '';
+            });
+            </script>
           <div class="form-group">
             <label for="facebookUrl">URL de Facebook:</label>
             <input type="url" id="facebookUrl" name="facebookUrl">
@@ -119,8 +126,15 @@
 
                     <div class="form-group">
                       <label for="whatsappUrl">URL de WhatsApp:</label>
-                      <input type="url" id="whatsappUrl" name="whatsappUrl" value="<%= contact.whatsappUrl %>">
+                      <input type="text" id="whatsappUrl-<%= contact._id %>" name="whatsappUrl" value="<%= contact.whatsappUrl %>" pattern="\d+" title="Solo se permiten números" required>
                     </div>
+                    <script>
+                      const whatsappInputUpdate = document.getElementById('whatsappUrl-<%= contact._id %>');
+                      whatsappInputUpdate.addEventListener('input', () => {
+                        const number = whatsappInputUpdate.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+                        whatsappInputUpdate.value = number ? `https://wa.me/${number}` : '';
+                      });
+                    </script>
 
                     <div class="form-group">
                       <label for="facebookUrl">URL de Facebook:</label>
